@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import Hello from './Hello';
 import TodoApp from './TodoApp';
 import AddTodo from './AddTodo';
+import TodoList from './TodoList';
 import './style.css';
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
       <div>
         <TodoApp />
         <AddTodo />
+        <TodoList />
       </div>
     );
   }

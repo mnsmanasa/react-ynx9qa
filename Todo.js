@@ -1,6 +1,6 @@
-import react from {React};
+import React from 'react';
 
-class Todo extends react.Component{
+class Todo extends React.Component{
 constructor() {
   super()
   this.state = {
@@ -10,7 +10,8 @@ constructor() {
         completed: false
       },
       {
-        todo
+        todo: "sdfsdf",
+        completed: true
       }
     ]
   }
@@ -18,10 +19,10 @@ constructor() {
 
   render(){
     return (
-      this.state.todos.map(todo => {
-        <react.Fragment key={todo}>
-          <li>{todo}</li>
-        </react.Fragment>
+      this.state.todos.map(t => {
+        return <React.Fragment key={t.todo}>
+          <li>{t.todo}</li>
+        </React.Fragment>
       })
     ) 
   }
