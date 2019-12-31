@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import {initialState} from './globalstate/reducer';
 
 class Todo extends React.Component{
 constructor(props) {
@@ -18,7 +16,6 @@ constructor(props) {
 }
 
   render(){
-    console.log(this.props.initialState)
     return (
       this.state.todos.map(t => {
         return <React.Fragment key={t.todo}>
@@ -29,4 +26,4 @@ constructor(props) {
   }
 }
 
-export default connect(null,{initialState})(Todo)
+export default Todo;
