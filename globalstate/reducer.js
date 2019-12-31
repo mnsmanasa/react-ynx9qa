@@ -1,6 +1,6 @@
 import { ADD_TODO, REMOVE_TODO } from './actionTypes';
 
-const initialState = {
+export const initialState = {
   todos: [
     {
         todo: "sdf"
