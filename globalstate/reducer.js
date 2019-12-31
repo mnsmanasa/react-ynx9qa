@@ -17,8 +17,7 @@ export default function(state = initialState, action) {
       console.log('reducer addodo', ...state, action.payload)
       return {
         ...state,todos: [...state.todos, {todo: action.payload}]
-      }
-      ;
+      };
     case REMOVE_TODO:
       return {
         ...state,
