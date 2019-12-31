@@ -6,12 +6,10 @@ constructor() {
   this.state = {
     todos: [
       {
-        todo: "sdf",
-        completed: false
+        todo: "sdf"
       },
       {
-        todo: "sdfsdf",
-        completed: true
+        todo: "sdfsdf"
       }
     ]
   }

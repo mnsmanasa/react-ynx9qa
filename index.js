@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import {createStore} from 'redux';
 import Hello from './Hello';
 import TodoApp from './TodoApp';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
+import reducer from './globalstate/reducer';
 import './style.css';
+
+const store = createStore(reducer);
 
 class App extends Component {
   constructor() {
@@ -16,11 +21,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Provider store={store}>
         <TodoApp />
         <AddTodo />
         <TodoList />
-      </div>
+      </Provider>
     );
   }
 }

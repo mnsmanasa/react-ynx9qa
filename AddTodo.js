@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addTodo } from "./globalstate/actions";
 
 class AddTodo extends React.Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       input: ""
     }
@@ -13,18 +15,18 @@ class AddTodo extends React.Component {
     this.setState({input: event.target.value})
   }
 
-  AddButton = () =>{
-
+  addButton = () =>{
+    // debugger;
   }
 
   render() {
     return (
       <div>
         <input type="text" placeholder="Add new todo item..." value={this.state.input} onChange={this.onInputChange}/>
-        <button onClick={this.AddButton} disabled={this.state.input.length < 1}>Add</button>
+        <button onClick={this.addButton} disabled={this.state.input.length < 1}>Add</button>
       </div>
     )
   }
 }
 
-export default AddTodo;
+export default connect(null,addTodo)(AddTodo)

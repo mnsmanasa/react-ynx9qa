@@ -9,7 +9,7 @@ class TodoList extends React.Component {
       <ul>
         <Todo />
       </ul>
-            </React.Fragment>
+      </React.Fragment>
 
     )
   }
