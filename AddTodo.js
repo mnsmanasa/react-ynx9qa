@@ -16,7 +16,7 @@ class AddTodo extends React.Component {
   }
 
   addButton = () =>{
-    // debugger;
+    this.props.addTodo(this.state.input)
   }
 
   render() {
@@ -29,4 +29,4 @@ class AddTodo extends React.Component {
   }
 }
 
-export default connect(null,addTodo)(AddTodo)
+export default connect(null,{addTodo})(AddTodo)

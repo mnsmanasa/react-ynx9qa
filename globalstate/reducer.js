@@ -14,10 +14,11 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
+      console.log('reducer addodo', ...state, action.payload)
       return {
-        ...state,
-        todoToAdd: Object.assign({}, action.payload)
-      };
+        ...state,todos: [...state.todos, {todo: action.payload}]
+      }
+      ;
     case REMOVE_TODO:
       return {
         ...state,
