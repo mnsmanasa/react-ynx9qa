@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeTodo, getTodo } from "./globalstate/actions";
+import { removeTodo } from "./globalstate/actions";
 
 class Todo extends React.Component {
   constructor(props) {
@@ -36,5 +36,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { removeTodo, getTodo }
+  { removeTodo }
 )(Todo);
