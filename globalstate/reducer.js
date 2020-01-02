@@ -19,9 +19,9 @@ export default function(state = initialState, action) {
         ...state,todos: [...state.todos, {todo: action.payload}]
       };
     case REMOVE_TODO:
+      console.log('remove',...state.todos)
       return {
-        ...state,
-        todoToRemove: Object.assign({}, action.payload)
+        ...state,todos: [...state.todos].filter(x =>    x.todo!== action.payload)
       };
     default:
       return state;
