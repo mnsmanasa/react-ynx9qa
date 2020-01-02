@@ -1,48 +1,40 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { removeTodo } from "./globalstate/actions";
+import React from "react";
+import { connect } from "react-redux";
+import { removeTodo, getTodo } from "./globalstate/actions";
 
-class Todo extends React.Component{
-constructor(props) {
-  super(props)
-  this.state = {
-    todos: [
-      {
-        todo: "sdf"
-      },
-      {
-        todo: "sdfsdf"
-      },
-      {
-        todo: "sdfsdf1"
-      },
-      {
-        todo: "sdfsdf2"
-      },
-      {
-        todo: "sdfsdf3"
-      },
-      {
-        todo: "sdfsdf4"
-      }
-    ]
+class Todo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    };
   }
-}
 
-removeTodo = (event) => {
-  // var x = event.target.getAttribute('data-target')
-  this.props.removeTodo(event.target.getAttribute('data-target'))
-}
+  removeTodo = event => {
+    this.props.removeTodo(event.target.getAttribute("data-target"));
+  };
 
-  render(){
-    return (
-      this.state.todos.map(t => {
-        return <React.Fragment key={t.todo}>
-          <li>{t.todo}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span data-target={t.todo} onClick={this.removeTodo}>X</span></li>
+  render() {
+    return this.props.todoList.map(t => {
+      return (
+        <React.Fragment key={t.todo}>
+          <li>
+            {t.todo}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span data-target={t.todo} onClick={this.removeTodo}>
+              X
+            </span>
+          </li>
         </React.Fragment>
-      })
-    ) 
+      );
+    });
   }
 }
 
-export default connect(null,{removeTodo})(Todo)
+const mapStateToProps = state => ({
+  todoList: state.todos
+});
+
+export default connect(
+  mapStateToProps,
+  { removeTodo, getTodo }
+)(Todo);
