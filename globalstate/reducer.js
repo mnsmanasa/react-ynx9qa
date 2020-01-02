@@ -2,11 +2,23 @@ import { ADD_TODO, REMOVE_TODO } from './actionTypes';
 
 export const initialState = {
   todos: [
-    {
+      {
         todo: "sdf"
       },
       {
         todo: "sdfsdf"
+      },
+      {
+        todo: "sdfsdf1"
+      },
+      {
+        todo: "sdfsdf2"
+      },
+      {
+        todo: "sdfsdf3"
+      },
+      {
+        todo: "sdfsdf4"
       }
   ]
 };
