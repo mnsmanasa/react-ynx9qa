@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeTodo } from "./globalstate/actions";
+import { removeTodo, toggleTodo } from "./globalstate/actions";
 
 class Todo extends React.Component {
   constructor(props) {
@@ -14,11 +14,15 @@ class Todo extends React.Component {
     this.props.removeTodo(event.target.getAttribute("data-target"));
   };
 
+  toggleTodo = (e) =>{
+    this.props.toggleTodo(e.target.getAttribute('id'))
+  }
+
   render() {
     return this.props.todoList.map(t => {
       return (
         <React.Fragment key={t.todo}>
-          <li>
+          <li id={t.id} onClick={this.toggleTodo} className={!t.completed ? 'strike-through': ''}>
             {t.todo}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span data-target={t.todo} onClick={this.removeTodo}>
               X
@@ -36,5 +40,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { removeTodo }
+  { removeTodo, toggleTodo }
 )(Todo);

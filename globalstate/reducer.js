@@ -1,24 +1,16 @@
-import { ADD_TODO, REMOVE_TODO } from "./actionTypes";
+import { ADD_TODO, REMOVE_TODO, TGL_TODO } from "./actionTypes";
 
 export const initialState = {
   todos: [
     {
-      todo: "sdf"
+      id: 1,
+      todo: "sdf",
+      completed: true
     },
     {
-      todo: "sdfsdf"
-    },
-    {
-      todo: "sdfsdf1"
-    },
-    {
-      todo: "sdfsdf2"
-    },
-    {
-      todo: "sdfsdf3"
-    },
-    {
-      todo: "sdfsdf4"
+      id: 2,
+      todo: "sdfsdf",
+      completed: false
     }
   ]
 };
@@ -32,10 +24,21 @@ export default function(state = initialState, action) {
         todos: [...state.todos, { todo: action.payload }]
       };
     case REMOVE_TODO:
-      console.log("remove", [...state.todos]);
+      // console.log("remove", [...state.todos]);
       return {
         ...state,
         todos: [...state.todos].filter(x => x.todo !== action.payload)
+      };
+    case TGL_TODO:
+      console.log('toggle', ...state.todo)
+      return {
+        ...state,
+        todos: [...state.todos].forEach(x => 
+          {if(x.id === action.payload){
+            x.completed = !x.completed
+            console.log(x.completed)
+          }}
+        )
       };
     default:
       return state;
