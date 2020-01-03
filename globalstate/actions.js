@@ -18,4 +18,4 @@ export const toggleTodo = todoId => ({
 export const fltrTodo = filter => ({
   type: FLTR_TODO,
   payload: filter
-})
+});

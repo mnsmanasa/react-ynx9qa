@@ -1,12 +1,11 @@
-import React from 'react';
-import Todo from './Todo';
-import {connect} from 'react-redux';
-import {removeTodo, toggleTodo} from './globalstate/actions';
+import React from "react";
+import Todo from "./Todo";
+import { connect } from "react-redux";
+import { removeTodo, toggleTodo } from "./globalstate/actions";
 
 class TodoList extends React.Component {
   render() {
-
-     var filteredList = this.props.todoList.filter(todo => {
+    var filteredList = this.props.todoList.filter(todo => {
       if (
         this.props.filterTodo === "true" ||
         this.props.filterTodo === "false"
@@ -19,16 +18,17 @@ class TodoList extends React.Component {
 
     return (
       <React.Fragment>
-      <div className="d-flex">
-        <div><b>Todo List</b></div>
-        <div>{filteredList.length} results found</div>
-      </div>      
-      <ul>
-        <Todo />
-      </ul>
+        <div className="d-flex">
+          <div>
+            <b>Todo List</b>
+          </div>
+          <div>{filteredList.length} results found</div>
+        </div>
+        <ul>
+          <Todo />
+        </ul>
       </React.Fragment>
-
-    )
+    );
   }
 }
 const mapStateToProps = state => ({

@@ -28,8 +28,7 @@ class Todo extends React.Component {
       }
     });
 
-    return (
-      filteredList.map(t => {
+    return filteredList.map(t => {
       return (
         <React.Fragment key={t.id}>
           <li
@@ -41,8 +40,7 @@ class Todo extends React.Component {
           </li>
         </React.Fragment>
       );
-    })
-    );
+    });
   }
 }
 

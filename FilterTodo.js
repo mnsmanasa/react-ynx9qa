@@ -8,7 +8,7 @@ class FilterTodo extends React.Component {
     this.state = {
       selectedFilter: "all"
     };
-    this.props.fltrTodo(this.state.selectedFilter)
+    this.props.fltrTodo(this.state.selectedFilter);
   }
 
   filterTodo = event => {
@@ -45,7 +45,8 @@ class FilterTodo extends React.Component {
           value="false"
           checked={this.state.selectedFilter === "false"}
           onChange={this.filterTodo}
-        /><label htmlFor="pending">Pending</label>
+        />
+        <label htmlFor="pending">Pending</label>
       </React.Fragment>
     );
   }
