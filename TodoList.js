@@ -21,7 +21,7 @@ class TodoList extends React.Component {
       <React.Fragment>
       <div className="d-flex">
         <div><b>Todo List</b></div>
-        <div>{this.props.filterTodo.length} results found</div>
+        <div>{filteredList.length} results found</div>
       </div>      
       <ul>
         <Todo />
