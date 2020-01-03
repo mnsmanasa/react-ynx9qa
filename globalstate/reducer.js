@@ -23,40 +23,43 @@ export default function(state = initialState, action) {
       console.log("reducer addodo", ...state, action.payload);
       return {
         ...state,
-        todos: [...state.todos, { id: state.initializeId++,todo: action.payload, completed: false }]
+        filteredTodos: [
+          ...state.todos,
+          { id: state.initializeId++, todo: action.payload, completed: false }
+        ]
       };
     case REMOVE_TODO:
       return {
         ...state,
-        todos: [...state.todos].filter(x => x.todo !== action.payload)
+        filteredTodos: [...state.todos].filter(x => x.todo !== action.payload)
       };
     case TGL_TODO:
-      state.todos.forEach(x => 
-          {if(x.id === Number(action.payload)){
-            x.completed = !x.completed
-            console.log(x.completed)
-          }}
-      )
+      state.todos.forEach(x => {
+        if (x.id === Number(action.payload)) {
+          x.completed = !x.completed;
+          console.log(x.completed);
+        }
+      });
       return {
         ...state,
-        todos: [...state.todos]
+        filteredTodos: [...state.todos]
       };
     case FLTR_TODO:
-      var originalData = state.todos
-      console.log('befoere',state.todos)
-      var filteredData = state.todos.filter(todo => {
-        if(action.payload === "true" || action.payload === "false") {
-        return String(todo.completed) === action.payload
-        } else {
-          return state.todos
-        }
-      })
-      console.log('after',state.todos,filteredData)
-      state.filteredTodos = filteredData
-    return {
-        ...state,
-        todos: [...state.todos]
-      };
+      if (action.payload === "true" || action.payload === "false") {
+        var x = state.todos.filter(todo => {
+          return String(todo.completed) === action.payload;
+        });
+        return {
+          ...state,
+          filteredTodos: x
+        };
+      } else {
+        console.log(state.todos)
+        return {
+          ...state,
+          filteredTodos: [...state.todos]
+        };
+      }
     default:
       return state;
   }
