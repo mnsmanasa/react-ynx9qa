@@ -56,7 +56,7 @@ export default function(state = initialState, action) {
     });    
     console.log(filteredList)   
       return {
-        ...state, filterTodo: filteredList
+        ...state, filterTodo: action.payload
       };
     default:
       return state;

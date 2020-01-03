@@ -29,7 +29,7 @@ class Todo extends React.Component {
     });
 
     return (
-      this.props.filterTodo.map(t => {
+      filteredList.map(t => {
       return (
         <React.Fragment key={t.id}>
           <li
