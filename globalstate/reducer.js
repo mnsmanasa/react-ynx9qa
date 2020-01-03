@@ -43,9 +43,20 @@ export default function(state = initialState, action) {
         ...state,
         todos: [...state.todos]
       };
-    case FLTR_TODO:           
+    case FLTR_TODO:    
+    var filteredList = state.todos.filter(todo => {
+      if (
+        action.payload === "true" ||
+        action.payload === "false"
+      ) {
+        return String(todo.completed) === action.payload;
+      } else {
+        return state.todos;
+      }
+    });    
+    console.log(filteredList)   
       return {
-        ...state, filterTodo: action.payload
+        ...state, filterTodo: filteredList
       };
     default:
       return state;
