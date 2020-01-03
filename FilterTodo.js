@@ -5,34 +5,50 @@ import { fltrTodo } from "./globalstate/actions";
 class FilterTodo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      selectedFilter: "all"
+    };
   }
 
   filterTodo = event => {
-    this.props.fltrTodo(event.target.getAttribute("data-target"))
-  }
+    this.setState({ selectedFilter: event.target.value });
+    this.props.fltrTodo(event.target.value);
+  };
 
   render() {
     return (
       <React.Fragment>
-        Filter:{" "}
-        <button data-target="all" onClick={this.filterTodo}>
-          All
-        </button>
-        <button data-target="true" onClick={this.filterTodo}>
-          Completed
-        </button>
-        <button data-target="false" onClick={this.filterTodo}>
-          Pending
-        </button>
+        Filter:
+        <input
+          type="radio"
+          name="filter"
+          value="all"
+          checked={this.state.selectedFilter === "all"}
+          onChange={this.filterTodo}
+        />
+        <label for="filter">All</label>
+        <input
+          type="radio"
+          name="filter"
+          value="true"
+          checked={this.state.selectedFilter === "true"}
+          onChange={this.filterTodo}
+        />
+        <label for="filter">Completed</label>
+        <input
+          type="radio"
+          name="filter"
+          value="false"
+          checked={this.state.selectedFilter === "false"}
+          onChange={this.filterTodo}
+        /><label for="filter">Pending</label>
       </React.Fragment>
     );
   }
 }
 
-
 const mapStateToProps = state => ({
-  todoList: state.todos,
+  todoList: state.todos
 });
 
 export default connect(
