@@ -1,4 +1,4 @@
-import { ADD_TODO, REMOVE_TODO, TGL_TODO } from "./actionTypes";
+import { ADD_TODO, REMOVE_TODO, TGL_TODO, FLTR_TODO } from "./actionTypes";
 
 export const initialState = {
   todos: [
@@ -13,6 +13,7 @@ export const initialState = {
       completed: false
     }
   ],
+  filteredTodos: [],
   initializeId: 3
 };
 
@@ -25,13 +26,11 @@ export default function(state = initialState, action) {
         todos: [...state.todos, { id: state.initializeId++,todo: action.payload, completed: false }]
       };
     case REMOVE_TODO:
-      // console.log("remove", [...state.todos]);
       return {
         ...state,
         todos: [...state.todos].filter(x => x.todo !== action.payload)
       };
     case TGL_TODO:
-      console.log('toggle', ...state.todos)
       state.todos.forEach(x => 
           {if(x.id === Number(action.payload)){
             x.completed = !x.completed
@@ -41,6 +40,20 @@ export default function(state = initialState, action) {
       return {
         ...state,
         todos: [...state.todos]
+      };
+    case FLTR_TODO:
+    console.log(state.todos)
+      var x = state.todos.filter(todo => {
+        if(action.payload === "true" || action.payload === "false") {
+        return String(todo.completed) === action.payload
+        } else {
+          return state.todos
+        }
+      })
+      state.filteredTodos = x
+    return {
+        ...state,
+        todos: [...state.filteredTodos]
       };
     default:
       return state;

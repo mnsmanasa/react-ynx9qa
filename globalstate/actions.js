@@ -1,4 +1,4 @@
-import { ADD_TODO, REMOVE_TODO, TGL_TODO } from "./actionTypes";
+import { ADD_TODO, REMOVE_TODO, TGL_TODO, FLTR_TODO } from "./actionTypes";
 
 export const addTodo = todo => ({
   type: ADD_TODO,
@@ -14,3 +14,8 @@ export const toggleTodo = todoId => ({
   type: TGL_TODO,
   payload: todoId
 });
+
+export const fltrTodo = filter => ({
+  type: FLTR_TODO,
+  payload: filter
+})
