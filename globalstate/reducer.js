@@ -30,15 +30,16 @@ export default function(state = initialState, action) {
         todos: [...state.todos].filter(x => x.todo !== action.payload)
       };
     case TGL_TODO:
-      console.log('toggle', ...state.todo)
-      return {
-        ...state,
-        todos: [...state.todos].forEach(x => 
-          {if(x.id === action.payload){
+      console.log('toggle', ...state.todos)
+      state.todos.forEach(x => 
+          {if(x.id === Number(action.payload)){
             x.completed = !x.completed
             console.log(x.completed)
           }}
-        )
+      )
+      return {
+        ...state,
+        todos: [...state.todos]
       };
     default:
       return state;

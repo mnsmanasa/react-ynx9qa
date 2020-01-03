@@ -23,10 +23,7 @@ class Todo extends React.Component {
       return (
         <React.Fragment key={t.todo}>
           <li id={t.id} onClick={this.toggleTodo} className={!t.completed ? 'strike-through': ''}>
-            {t.todo}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span data-target={t.todo} onClick={this.removeTodo}>
-              X
-            </span>
+            {t.todo}
           </li>
         </React.Fragment>
       );
