@@ -5,36 +5,48 @@ import { removeTodo, toggleTodo } from "./globalstate/actions";
 class Todo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      
-    };
+    this.state = {};
   }
 
   removeTodo = event => {
     this.props.removeTodo(event.target.getAttribute("data-target"));
   };
 
-  toggleTodo = (e) =>{
-    this.props.toggleTodo(e.target.getAttribute('id'))
-  }
+  toggleTodo = e => {
+    this.props.toggleTodo(e.target.getAttribute("id"));
+  };
 
   render() {
-
-    return this.props.todoList.filter(todo => {
-      if(this.props.filterTodo === "true" || this.props.filterTodo === "false"){
-        return String(todo.completed) === this.props.filterTodo
+    var filteredList = this.props.todoList.filter(todo => {
+      if (
+        this.props.filterTodo === "true" ||
+        this.props.filterTodo === "false"
+      ) {
+        return String(todo.completed) === this.props.filterTodo;
       } else {
-        return this.props.todoList
+        return this.props.todoList;
       }
-    }).map(t => {
+    });
+
+    return (
+      <React.Fragment>
+      <div>{filteredList.length} results found</div>
+      {filteredList.map(t => {
       return (
         <React.Fragment key={t.todo}>
-          <li id={t.id} onClick={this.toggleTodo} className={t.completed ? 'strike-through': ''}>
+          <li
+            id={t.id}
+            onClick={this.toggleTodo}
+            className={t.completed ? "strike-through" : ""}
+          >
             {t.todo}
           </li>
         </React.Fragment>
       );
-    });
+    })}
+          </React.Fragment>
+
+    );
   }
 }
 
