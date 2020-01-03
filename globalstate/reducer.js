@@ -12,7 +12,8 @@ export const initialState = {
       todo: "sdfsdf",
       completed: false
     }
-  ]
+  ],
+  initializeId: 3
 };
 
 export default function(state = initialState, action) {
@@ -21,7 +22,7 @@ export default function(state = initialState, action) {
       console.log("reducer addodo", ...state, action.payload);
       return {
         ...state,
-        todos: [...state.todos, { todo: action.payload }]
+        todos: [...state.todos, { id: state.initializeId++,todo: action.payload, completed: false }]
       };
     case REMOVE_TODO:
       // console.log("remove", [...state.todos]);

@@ -22,7 +22,7 @@ class Todo extends React.Component {
     return this.props.todoList.map(t => {
       return (
         <React.Fragment key={t.todo}>
-          <li id={t.id} onClick={this.toggleTodo} className={!t.completed ? 'strike-through': ''}>
+          <li id={t.id} onClick={this.toggleTodo} className={t.completed ? 'strike-through': ''}>
             {t.todo}
           </li>
         </React.Fragment>
