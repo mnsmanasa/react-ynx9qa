@@ -23,43 +23,39 @@ export default function(state = initialState, action) {
       console.log("reducer addodo", ...state, action.payload);
       return {
         ...state,
-        filteredTodos: [
-          ...state.todos,
-          { id: state.initializeId++, todo: action.payload, completed: false }
-        ]
+        todos: [...state.todos, { id: state.initializeId++,todo: action.payload, completed: false }]
       };
     case REMOVE_TODO:
       return {
         ...state,
-        filteredTodos: [...state.todos].filter(x => x.todo !== action.payload)
+        todos: [...state.todos].filter(x => x.todo !== action.payload)
       };
     case TGL_TODO:
-      state.todos.forEach(x => {
-        if (x.id === Number(action.payload)) {
-          x.completed = !x.completed;
-          console.log(x.completed);
-        }
-      });
+      state.todos.forEach(x => 
+          {if(x.id === Number(action.payload)){
+            x.completed = !x.completed
+            console.log(x.completed)
+          }}
+      )
       return {
         ...state,
-        filteredTodos: [...state.todos]
+        todos: [...state.todos]
       };
     case FLTR_TODO:
-      if (action.payload === "true" || action.payload === "false") {
-        var x = state.todos.filter(todo => {
-          return String(todo.completed) === action.payload;
-        });
-        return {
-          ...state,
-          filteredTodos: x
-        };
-      } else {
-        console.log(state.todos)
-        return {
-          ...state,
-          filteredTodos: [...state.todos]
-        };
-      }
+    console.log(state.todos)
+      var x = state.todos.filter(todo => {
+        if(action.payload === "true" || action.payload === "false") {
+        return String(todo.completed) === action.payload
+        } else {
+          return state.todos
+        }
+      })
+      state.filteredTodos = x
+      console.log(state.todos)
+    return {
+        ...state,
+        todos: [...state.filteredTodos]
+      };
     default:
       return state;
   }
