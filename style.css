@@ -5,3 +5,20 @@ h1, p {
 .strike-through {
   text-decoration: line-through;
 }
+
+input[type='radio']{
+  display: none;
+}
+input[type='radio']{
+  display: none;
+}
+label{
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #dad6d6;
+}
+
+input[type='radio']:checked + label{
+  background-color: blue;
+  color: white
+}
