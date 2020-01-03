@@ -20,28 +20,31 @@ class FilterTodo extends React.Component {
       <React.Fragment>
         Filter:
         <input
+          id="all"
           type="radio"
           name="filter"
           value="all"
           checked={this.state.selectedFilter === "all"}
           onChange={this.filterTodo}
         />
-        <label for="filter">All</label>
+        <label for="all">All</label>
         <input
+          id="completed"
           type="radio"
           name="filter"
           value="true"
           checked={this.state.selectedFilter === "true"}
           onChange={this.filterTodo}
         />
-        <label for="filter">Completed</label>
+        <label for="completed">Completed</label>
         <input
+          id="pending"
           type="radio"
           name="filter"
           value="false"
           checked={this.state.selectedFilter === "false"}
           onChange={this.filterTodo}
-        /><label for="filter">Pending</label>
+        /><label for="pending">Pending</label>
       </React.Fragment>
     );
   }
