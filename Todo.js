@@ -19,8 +19,14 @@ class Todo extends React.Component {
   }
 
   render() {
-    console.log(this.props.filterTodo)
-    return this.props.todoList.map(t => {
+
+    return this.props.todoList.filter(todo => {
+      if(this.props.filterTodo === "true" || this.props.filterTodo === "false"){
+        return String(todo.completed) === this.props.filterTodo
+      } else {
+        return this.props.todoList
+      }
+    }).map(t => {
       return (
         <React.Fragment key={t.todo}>
           <li id={t.id} onClick={this.toggleTodo} className={t.completed ? 'strike-through': ''}>
