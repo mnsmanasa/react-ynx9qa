@@ -13,7 +13,7 @@ export const initialState = {
       completed: false
     }
   ],
-  filteredTodos: [],
+  filterTodo: null,
   initializeId: 3
 };
 
@@ -23,7 +23,10 @@ export default function(state = initialState, action) {
       console.log("reducer addodo", ...state, action.payload);
       return {
         ...state,
-        todos: [...state.todos, { id: state.initializeId++,todo: action.payload, completed: false }]
+        todos: [
+          ...state.todos,
+          { id: state.initializeId++, todo: action.payload, completed: false }
+        ]
       };
     case REMOVE_TODO:
       return {
@@ -31,30 +34,19 @@ export default function(state = initialState, action) {
         todos: [...state.todos].filter(x => x.todo !== action.payload)
       };
     case TGL_TODO:
-      state.todos.forEach(x => 
-          {if(x.id === Number(action.payload)){
-            x.completed = !x.completed
-            console.log(x.completed)
-          }}
-      )
+      state.todos.forEach(x => {
+        if (x.id === Number(action.payload)) {
+          x.completed = !x.completed;
+          console.log(x.completed);
+        }
+      });
       return {
         ...state,
         todos: [...state.todos]
       };
-    case FLTR_TODO:
-    console.log(state.todos)
-      var x = state.todos.filter(todo => {
-        if(action.payload === "true" || action.payload === "false") {
-        return String(todo.completed) === action.payload
-        } else {
-          return state.todos
-        }
-      })
-      state.filteredTodos = x
-      console.log(state.todos)
-    return {
-        ...state,
-        todos: [...state.filteredTodos]
+    case FLTR_TODO:           
+      return {
+        ...state, filterTodo: action.payload
       };
     default:
       return state;

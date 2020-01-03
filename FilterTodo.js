@@ -9,8 +9,9 @@ class FilterTodo extends React.Component {
   }
 
   filterTodo = event => {
-    this.props.fltrTodo(event.target.getAttribute("data-target"));
-  };
+    this.props.fltrTodo(event.target.getAttribute("data-target"))
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -29,7 +30,12 @@ class FilterTodo extends React.Component {
   }
 }
 
+
+const mapStateToProps = state => ({
+  todoList: state.todos,
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { fltrTodo }
 )(FilterTodo);

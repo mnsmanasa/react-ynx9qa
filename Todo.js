@@ -19,6 +19,7 @@ class Todo extends React.Component {
   }
 
   render() {
+    console.log(this.props.filterTodo)
     return this.props.todoList.map(t => {
       return (
         <React.Fragment key={t.todo}>
@@ -33,7 +34,7 @@ class Todo extends React.Component {
 
 const mapStateToProps = state => ({
   todoList: state.todos,
-  initialData: state.todos
+  filterTodo: state.filterTodo
 });
 
 export default connect(
