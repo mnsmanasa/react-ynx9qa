@@ -32,7 +32,8 @@ class Todo extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  todoList: state.filteredTodos
+  todoList: state.filteredTodos,
+  initialData: state.todos
 });
 
 export default connect(
