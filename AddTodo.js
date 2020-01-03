@@ -17,6 +17,7 @@ class AddTodo extends React.Component {
 
   addButton = () =>{
     this.props.addTodo(this.state.input)
+    this.setState({input: ''})
   }
 
   render() {
