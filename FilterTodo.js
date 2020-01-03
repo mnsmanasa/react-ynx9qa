@@ -27,7 +27,7 @@ class FilterTodo extends React.Component {
           checked={this.state.selectedFilter === "all"}
           onChange={this.filterTodo}
         />
-        <label for="all">All</label>
+        <label htmlFor="all">All</label>
         <input
           id="completed"
           type="radio"
@@ -36,7 +36,7 @@ class FilterTodo extends React.Component {
           checked={this.state.selectedFilter === "true"}
           onChange={this.filterTodo}
         />
-        <label for="completed">Completed</label>
+        <label htmlFor="completed">Completed</label>
         <input
           id="pending"
           type="radio"
@@ -44,7 +44,7 @@ class FilterTodo extends React.Component {
           value="false"
           checked={this.state.selectedFilter === "false"}
           onChange={this.filterTodo}
-        /><label for="pending">Pending</label>
+        /><label htmlFor="pending">Pending</label>
       </React.Fragment>
     );
   }
