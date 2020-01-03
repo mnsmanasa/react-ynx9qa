@@ -27,6 +27,8 @@ class App extends Component {
         <AddTodo />
         <br/>
         <FilterTodo />
+        <br/>
+        <br/>
         <TodoList />
       </Provider>
     );

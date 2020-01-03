@@ -29,12 +29,9 @@ class Todo extends React.Component {
     });
 
     return (
-      <React.Fragment>
-      <div>{filteredList.length} results found</div>
-      <br/>
-      {filteredList.map(t => {
+      filteredList.map(t => {
       return (
-        <React.Fragment key={t.todo}>
+        <React.Fragment key={t.id}>
           <li
             id={t.id}
             onClick={this.toggleTodo}
@@ -44,9 +41,7 @@ class Todo extends React.Component {
           </li>
         </React.Fragment>
       );
-    })}
-          </React.Fragment>
-
+    })
     );
   }
 }
