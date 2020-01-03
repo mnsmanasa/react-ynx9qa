@@ -42,18 +42,20 @@ export default function(state = initialState, action) {
         todos: [...state.todos]
       };
     case FLTR_TODO:
-    console.log(state.todos)
-      var x = state.todos.filter(todo => {
+      var originalData = state.todos
+      console.log('befoere',state.todos)
+      var filteredData = state.todos.filter(todo => {
         if(action.payload === "true" || action.payload === "false") {
         return String(todo.completed) === action.payload
         } else {
           return state.todos
         }
       })
-      state.filteredTodos = x
+      console.log('after',state.todos,filteredData)
+      state.filteredTodos = filteredData
     return {
         ...state,
-        todos: [...state.filteredTodos]
+        todos: [...state.todos]
       };
     default:
       return state;
