@@ -31,6 +31,7 @@ class Todo extends React.Component {
     return (
       <React.Fragment>
       <div>{filteredList.length} results found</div>
+      <br/>
       {filteredList.map(t => {
       return (
         <React.Fragment key={t.todo}>
